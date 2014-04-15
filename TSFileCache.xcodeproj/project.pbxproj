@@ -23,6 +23,7 @@
 		12AC5F1118FDA0640021C767 /* NSURL+TSFileCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AC5F1018FDA0640021C767 /* NSURL+TSFileCache.m */; };
 		12AC5F1418FDA09E0021C767 /* NSError+TSFileCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AC5F1318FDA09E0021C767 /* NSError+TSFileCache.m */; };
 		12AC5F1818FDA16B0021C767 /* TSFileCache+Prepare.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AC5F1718FDA16B0021C767 /* TSFileCache+Prepare.m */; };
+		12AC5F1B18FDA58D0021C767 /* TSFileCache+StorageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AC5F1A18FDA58D0021C767 /* TSFileCache+StorageManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		12AC5F1318FDA09E0021C767 /* NSError+TSFileCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+TSFileCache.m"; sourceTree = "<group>"; };
 		12AC5F1618FDA16B0021C767 /* TSFileCache+Prepare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TSFileCache+Prepare.h"; sourceTree = "<group>"; };
 		12AC5F1718FDA16B0021C767 /* TSFileCache+Prepare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TSFileCache+Prepare.m"; sourceTree = "<group>"; };
+		12AC5F1918FDA58D0021C767 /* TSFileCache+StorageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TSFileCache+StorageManager.h"; sourceTree = "<group>"; };
+		12AC5F1A18FDA58D0021C767 /* TSFileCache+StorageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TSFileCache+StorageManager.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +188,8 @@
 			children = (
 				12AC5F1618FDA16B0021C767 /* TSFileCache+Prepare.h */,
 				12AC5F1718FDA16B0021C767 /* TSFileCache+Prepare.m */,
+				12AC5F1918FDA58D0021C767 /* TSFileCache+StorageManager.h */,
+				12AC5F1A18FDA58D0021C767 /* TSFileCache+StorageManager.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -291,6 +296,7 @@
 				12AC5EEC18FD8BB00021C767 /* TSAppDelegate.m in Sources */,
 				12AC5F1418FDA09E0021C767 /* NSError+TSFileCache.m in Sources */,
 				12AC5F1818FDA16B0021C767 /* TSFileCache+Prepare.m in Sources */,
+				12AC5F1B18FDA58D0021C767 /* TSFileCache+StorageManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

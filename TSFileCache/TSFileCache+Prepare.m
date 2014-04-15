@@ -16,9 +16,6 @@ static NSString * const TSFileCachePlistFileName = @"content.plist";
     NSError *localError = nil;
     /// Create directory
     [self _prepareDirectoryAtURL:directoryURL error:&localError];
-    if (!localError) {
-        [self _preparePlistInDirectory:directoryURL error:&localError];
-    }
     
     if (localError && error) {
         *error = localError;
@@ -49,20 +46,4 @@ static NSString * const TSFileCachePlistFileName = @"content.plist";
     }
 }
 
-- (void)_preparePlistInDirectory:(NSURL *)directoryURL error:(NSError *__autoreleasing *)error {
-    /// plist url
-    NSURL *fileURL = [directoryURL URLByAppendingPathComponent:TSFileCachePlistFileName];
-    
-    /// check if file exists
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    BOOL fileExists = [fileManager fileExistsAtPath:[fileURL path]];
-    if (!fileExists) {
-        NSDictionary *dictionary = [NSDictionary dictionary];
-        BOOL success = [dictionary writeToURL:fileURL atomically:YES];
-        /// Raise exception if file has not been created. It's serious error which prevents correct working.
-        if (!success && error) {
-            *error = [NSError _tsfc_errorWithDescription:[NSString stringWithFormat:@"Serious error. Cannot create internal plist file at path %@.", [fileURL path]]];
-        }
-    }
-}
 @end

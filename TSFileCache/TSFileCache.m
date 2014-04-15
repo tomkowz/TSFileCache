@@ -8,12 +8,13 @@
 
 #import "TSFileCache.h"
 #import "TSFileCache+Prepare.h"
+#import "TSFileCache+StorageManager.h"
 #import "NSURL+TSFileCache.h"
 
 #pragma mark - TSFileCache
 @implementation TSFileCache {
     NSURL *_directoryURL;
-//    NSCache *_cache;
+    NSCache *_cache;
 }
 
 
@@ -37,13 +38,13 @@
     self = [super init];
     if (self) {
         _directoryURL = directoryURL;
-//        _cache = [[NSCache alloc] init];
+        _cache = [[NSCache alloc] init];
     }
     return self;
 }
 
 
-#pragma mark - Prepare
+#pragma mark - Externals
 - (void)prepare:(NSError *__autoreleasing *)error {
     NSError *localError = nil;
     [self prepareWithDirectory:_directoryURL error:&localError];
@@ -53,6 +54,31 @@
         *error = localError;
     }
 }
+
+- (void)clear {
+    [_cache removeAllObjects];
+    [self _clearDirectoryAtURL:_directoryURL];
+}
+
+- (NSData *)dataForKey:(NSString *)key {
+    NSData *data = nil;
+    if (key) {
+        data = [_cache objectForKey:key];
+        if (!data) {
+            data = [self _readFileAtURL:[_directoryURL URLByAppendingPathComponent:key]];
+        }
+    }
+    
+    return data;
+}
+
+- (void)storeData:(NSData *)data forKey:(NSString *)key {
+    if (data && key) {
+        [_cache setObject:data forKey:key];
+        [self _writeData:data atURL:[_directoryURL URLByAppendingPathComponent:key]];
+    }
+}
+
 
 #pragma mark - Helpers
 + (NSURL *)_temporaryDirectoryURL {

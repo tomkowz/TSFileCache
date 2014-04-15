@@ -8,22 +8,27 @@
 
 #import <Foundation/Foundation.h>
 
-
 @interface TSFileCache : NSObject
 
-/**
- Method returns instance which has set directoryURL. Method does not create directory.
-*/
+/// Instance which has set directoryURL. Method does not create directory.
 + (instancetype)cacheForURL:(NSURL *)directoryURL;
 
-/**
- Method returns instance which has set directoryURL relative to NSTemporaryDirectory(). Method does not create relative directory.
-*/
+/// Instance which has set directoryURL relative to NSTemporaryDirectory(). Method does not create relative directory.
 + (instancetype)cacheInTemporaryDirectoryWithRelativeURL:(NSURL *)relativeURL;
 
-/**
- Method prepare instance to work.
- */
+
+
+/// Prepare instance to work. Call after init.
 - (void)prepare:(NSError **)error;
+
+/// Clean container if exists
+- (void)clear;
+
+/// Returns data for key. Nil if key is not set
+- (NSData *)dataForKey:(NSString *)key;
+
+/// Store data for passed key.
+- (void)storeData:(NSData *)data forKey:(NSString *)key;
+
 
 @end
