@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+/** 
+ If you want to prevent your subclass to use one of methods below apply this macro.
+ + (void)setSharedInstance:(TSFileCache *)instance __TSFileCacheUnavailable__;
+ */
+#ifndef __TSFileCacheUnavailable__
+    #define __TSFileCacheUnavailable__ __attribute__((unavailable("Method is not available in this subclass.")))
+#endif
+
 @interface TSFileCache : NSObject
 
 /// Set shared instance.

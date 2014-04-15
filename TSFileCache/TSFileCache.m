@@ -95,15 +95,15 @@ static TSFileCache *_sharedInstance = nil;
         data = [_cache objectForKey:key];
         if (!data) {
             data = [self _readFileAtURL:[_directoryURL URLByAppendingPathComponent:key]];
+            if (data)
+                [_cache setObject:data forKey:key];
         }
     }
-    
     return data;
 }
 
 - (void)storeData:(NSData *)data forKey:(NSString *)key {
     if (data && key) {
-        [_cache setObject:data forKey:key];
         [self _writeData:data atURL:[_directoryURL URLByAppendingPathComponent:key]];
     }
 }
@@ -140,7 +140,7 @@ static TSFileCache *_sharedInstance = nil;
 @implementation TSFileCache (StorageManager)
 
 - (NSData *)_readFileAtURL:(NSURL *)fileURL {
-    return [NSData dataWithContentsOfURL:fileURL];
+    return [[NSData alloc] initWithContentsOfURL:fileURL options:NSDataReadingUncached error:nil];
 }
 
 - (void)_writeData:(NSData *)data atURL:(NSURL *)fileURL {

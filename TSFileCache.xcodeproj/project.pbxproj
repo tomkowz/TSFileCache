@@ -19,6 +19,8 @@
 		12AC5EFF18FD8BB00021C767 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12AC5EFD18FD8BB00021C767 /* InfoPlist.strings */; };
 		12AC5F0118FD8BB00021C767 /* TSFileCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AC5F0018FD8BB00021C767 /* TSFileCacheTests.m */; };
 		12AC5F0C18FD8C080021C767 /* TSFileCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AC5F0B18FD8C080021C767 /* TSFileCache.m */; };
+		12AC5F1F18FDB0340021C767 /* TSImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AC5F1E18FDB0340021C767 /* TSImageCache.m */; };
+		12AC5F2118FDBD000021C767 /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = 12AC5F2018FDBD000021C767 /* image.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,9 @@
 		12AC5F0018FD8BB00021C767 /* TSFileCacheTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSFileCacheTests.m; sourceTree = "<group>"; };
 		12AC5F0A18FD8C080021C767 /* TSFileCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSFileCache.h; sourceTree = "<group>"; };
 		12AC5F0B18FD8C080021C767 /* TSFileCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSFileCache.m; sourceTree = "<group>"; };
+		12AC5F1D18FDB0340021C767 /* TSImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSImageCache.h; sourceTree = "<group>"; };
+		12AC5F1E18FDB0340021C767 /* TSImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSImageCache.m; sourceTree = "<group>"; };
+		12AC5F2018FDBD000021C767 /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				12AC5F0D18FDA03E0021C767 /* Classes */,
+				12AC5F1C18FDB0150021C767 /* Example */,
 				12AC5EE118FD8BB00021C767 /* TSFileCache */,
 				12AC5EFA18FD8BB00021C767 /* TSFileCacheTests */,
 				12AC5EDA18FD8BB00021C767 /* Frameworks */,
@@ -119,6 +125,7 @@
 		12AC5EE218FD8BB00021C767 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				12AC5F2018FDBD000021C767 /* image.png */,
 				12AC5EE318FD8BB00021C767 /* TSFileCache-Info.plist */,
 				12AC5EE418FD8BB00021C767 /* InfoPlist.strings */,
 				12AC5EE718FD8BB00021C767 /* main.m */,
@@ -153,6 +160,15 @@
 			);
 			name = Classes;
 			path = TSFileCache;
+			sourceTree = "<group>";
+		};
+		12AC5F1C18FDB0150021C767 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				12AC5F1D18FDB0340021C767 /* TSImageCache.h */,
+				12AC5F1E18FDB0340021C767 /* TSImageCache.m */,
+			);
+			name = Example;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +219,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Tomasz Szulc";
 				TargetAttributes = {
+					12AC5ED718FD8BB00021C767 = {
+						DevelopmentTeam = 7HTJY423B9;
+					};
 					12AC5EF218FD8BB00021C767 = {
 						TestTargetID = 12AC5ED718FD8BB00021C767;
 					};
@@ -232,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				12AC5EE618FD8BB00021C767 /* InfoPlist.strings in Resources */,
+				12AC5F2118FDBD000021C767 /* image.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				12AC5EE818FD8BB00021C767 /* main.m in Sources */,
+				12AC5F1F18FDB0340021C767 /* TSImageCache.m in Sources */,
 				12AC5F0C18FD8C080021C767 /* TSFileCache.m in Sources */,
 				12AC5EEC18FD8BB00021C767 /* TSAppDelegate.m in Sources */,
 			);
@@ -371,6 +392,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TSFileCache/TSFileCache-Prefix.pch";
 				INFOPLIST_FILE = "TSFileCache/TSFileCache-Info.plist";
@@ -384,6 +406,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TSFileCache/TSFileCache-Prefix.pch";
 				INFOPLIST_FILE = "TSFileCache/TSFileCache-Info.plist";
@@ -451,6 +474,7 @@
 				12AC5F0618FD8BB00021C767 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		12AC5F0718FD8BB00021C767 /* Build configuration list for PBXNativeTarget "TSFileCacheTests" */ = {
 			isa = XCConfigurationList;
@@ -459,6 +483,7 @@
 				12AC5F0918FD8BB00021C767 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

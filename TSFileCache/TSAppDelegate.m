@@ -7,6 +7,8 @@
 //
 
 #import "TSAppDelegate.h"
+#import "TSFileCache.h"
+#import "TSImageCache.h"
 
 @implementation TSAppDelegate
 
@@ -16,34 +18,63 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    /// Test TSFileCache
+//    [self testTSFileCacheExample];
+    /// Test image cache
+    [self testTSImageCacheExample];
     return YES;
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+- (void)testTSFileCacheExample {
+    TSFileCache *cache = [TSFileCache cacheInTemporaryDirectoryWithRelativeURL:[NSURL URLWithString:@"/FileCache"]];
+    [cache prepare:nil];
+    
+    UIImage *image = [UIImage imageNamed:@"image.png"];
+    NSData *data = UIImagePNGRepresentation(image);
+    for (int i = 0; i < 1000; i++) {
+        [cache storeData:data forKey:[NSString stringWithFormat:@"image_%d", i]];
+    }
+    
+    for (int i = 0; i < 1000; i++) {
+        NSData *data = [cache dataForKey:[NSString stringWithFormat:@"image_%d", i]];
+    }
+    
+    for (int i = 0; i < 1000; i++) {
+        NSData *data = [cache dataForKey:[NSString stringWithFormat:@"image_%d", i]];
+    }
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+- (void)testTSImageCacheExample {
+    [self testCacheImage];
+    [self testReadImageFromCache];
+    [self testReadImageFromCache];
+    [self testCacheImage2];
+    [self testReadImageFromCache];
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+- (void)testCacheImage {
+    TSImageCache *imageCache = [TSImageCache sharedInstance];
+    UIImage *image = [UIImage imageNamed:@"image.png"];
+    for (int i = 0; i < 1000; i++) {
+        [imageCache cacheImage:image forKey:[NSString stringWithFormat:@"image%d", i]];
+    }
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+- (void)testReadImageFromCache {
+    TSImageCache *imageCache = [TSImageCache sharedInstance];
+    for (int i = 0; i < 1000; i++) {
+        UIImage *image = [imageCache imageForKey:[NSString stringWithFormat:@"image%d", i]];
+        /// do something with image
+    }
 }
 
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+- (void)testCacheImage2 {
+    TSImageCache *imageCache = [TSImageCache sharedInstance];
+    UIImage *image = [UIImage imageNamed:@"image.png"];
+    for (int i = 0; i < 1000; i += 2) {
+        [imageCache cacheImage:image forKey:[NSString stringWithFormat:@"image%d", i]];
+    }
 }
 
 @end
