@@ -38,6 +38,15 @@ static NSString * const TSFileCacheErrorDomain = @"TSFileCacheErrorDomain";
     NSCache *_cache;
 }
 
+static TSFileCache *_sharedInstance = nil;
++ (void)setSharedInstance:(TSFileCache *)instance {
+    _sharedInstance = instance;
+}
+
++ (instancetype)sharedInstance {
+    return _sharedInstance;
+}
+
 #pragma mark - Initializers
 + (instancetype)cacheForURL:(NSURL *)directoryURL {
     NSParameterAssert(directoryURL && [directoryURL isFileURL]);

@@ -10,6 +10,13 @@
 
 @interface TSFileCache : NSObject
 
+/// Set shared instance.
++ (void)setSharedInstance:(TSFileCache *)instance;
+
+/// Get shared instance. Nil if not set.
++ (instancetype)sharedInstance;
+
+
 /// Instance which has set directoryURL. Method does not create directory.
 + (instancetype)cacheForURL:(NSURL *)directoryURL;
 

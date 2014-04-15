@@ -22,6 +22,7 @@ static NSString * const mainTestDirectory = @"aslkdjfsalkdjfskfdl-sdfsasdfsalfkj
 - (void)setUp
 {
     [super setUp];
+    [TSFileCache setSharedInstance:nil];
     _fileCache = [TSFileCache cacheForURL:[self testURL]];
     [[NSFileManager defaultManager] removeItemAtURL:[self testURL] error:nil];
 }
@@ -30,6 +31,7 @@ static NSString * const mainTestDirectory = @"aslkdjfsalkdjfskfdl-sdfsasdfsalfkj
 {
     _fileCache = nil;
     [[NSFileManager defaultManager] removeItemAtURL:[self testURL] error:nil];
+    [TSFileCache setSharedInstance:nil];
     [super tearDown];
 }
 
@@ -55,6 +57,17 @@ static NSString * const mainTestDirectory = @"aslkdjfsalkdjfskfdl-sdfsasdfsalfkj
 
 - (void)testThatInstanceShouldThrowExceptionForNilRelativeURL {
     XCTAssertThrows([TSFileCache cacheInTemporaryDirectoryWithRelativeURL:nil], @"");
+}
+
+
+#pragma mark - setSharedInstance:
+- (void)testThatSharedInstanceShouldBeSet {
+    [TSFileCache setSharedInstance:_fileCache];
+    XCTAssertNotNil([TSFileCache sharedInstance], @"");
+}
+
+- (void)testThatSharedInstanceShouldBeNilIfNotSet {
+    XCTAssertNil([TSFileCache sharedInstance], @"");
 }
 
 

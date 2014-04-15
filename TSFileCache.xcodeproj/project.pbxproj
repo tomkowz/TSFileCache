@@ -13,7 +13,6 @@
 		12AC5EE618FD8BB00021C767 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12AC5EE418FD8BB00021C767 /* InfoPlist.strings */; };
 		12AC5EE818FD8BB00021C767 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AC5EE718FD8BB00021C767 /* main.m */; };
 		12AC5EEC18FD8BB00021C767 /* TSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AC5EEB18FD8BB00021C767 /* TSAppDelegate.m */; };
-		12AC5EEE18FD8BB00021C767 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12AC5EED18FD8BB00021C767 /* Images.xcassets */; };
 		12AC5EF518FD8BB00021C767 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AC5EF418FD8BB00021C767 /* XCTest.framework */; };
 		12AC5EF618FD8BB00021C767 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AC5EDB18FD8BB00021C767 /* Foundation.framework */; };
 		12AC5EF718FD8BB00021C767 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AC5EDF18FD8BB00021C767 /* UIKit.framework */; };
@@ -43,7 +42,6 @@
 		12AC5EE918FD8BB00021C767 /* TSFileCache-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TSFileCache-Prefix.pch"; sourceTree = "<group>"; };
 		12AC5EEA18FD8BB00021C767 /* TSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSAppDelegate.h; sourceTree = "<group>"; };
 		12AC5EEB18FD8BB00021C767 /* TSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSAppDelegate.m; sourceTree = "<group>"; };
-		12AC5EED18FD8BB00021C767 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		12AC5EF318FD8BB00021C767 /* TSFileCacheTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TSFileCacheTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		12AC5EF418FD8BB00021C767 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		12AC5EFC18FD8BB00021C767 /* TSFileCacheTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TSFileCacheTests-Info.plist"; sourceTree = "<group>"; };
@@ -113,7 +111,6 @@
 			children = (
 				12AC5EEA18FD8BB00021C767 /* TSAppDelegate.h */,
 				12AC5EEB18FD8BB00021C767 /* TSAppDelegate.m */,
-				12AC5EED18FD8BB00021C767 /* Images.xcassets */,
 				12AC5EE218FD8BB00021C767 /* Supporting Files */,
 			);
 			path = TSFileCache;
@@ -235,7 +232,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				12AC5EE618FD8BB00021C767 /* InfoPlist.strings in Resources */,
-				12AC5EEE18FD8BB00021C767 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
