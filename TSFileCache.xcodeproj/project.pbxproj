@@ -1,0 +1,455 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		12AC5EDC18FD8BB00021C767 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AC5EDB18FD8BB00021C767 /* Foundation.framework */; };
+		12AC5EDE18FD8BB00021C767 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AC5EDD18FD8BB00021C767 /* CoreGraphics.framework */; };
+		12AC5EE018FD8BB00021C767 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AC5EDF18FD8BB00021C767 /* UIKit.framework */; };
+		12AC5EE618FD8BB00021C767 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12AC5EE418FD8BB00021C767 /* InfoPlist.strings */; };
+		12AC5EE818FD8BB00021C767 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AC5EE718FD8BB00021C767 /* main.m */; };
+		12AC5EEC18FD8BB00021C767 /* TSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AC5EEB18FD8BB00021C767 /* TSAppDelegate.m */; };
+		12AC5EEE18FD8BB00021C767 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12AC5EED18FD8BB00021C767 /* Images.xcassets */; };
+		12AC5EF518FD8BB00021C767 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AC5EF418FD8BB00021C767 /* XCTest.framework */; };
+		12AC5EF618FD8BB00021C767 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AC5EDB18FD8BB00021C767 /* Foundation.framework */; };
+		12AC5EF718FD8BB00021C767 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AC5EDF18FD8BB00021C767 /* UIKit.framework */; };
+		12AC5EFF18FD8BB00021C767 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12AC5EFD18FD8BB00021C767 /* InfoPlist.strings */; };
+		12AC5F0118FD8BB00021C767 /* TSFileCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AC5F0018FD8BB00021C767 /* TSFileCacheTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		12AC5EF818FD8BB00021C767 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12AC5ED018FD8BB00021C767 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 12AC5ED718FD8BB00021C767;
+			remoteInfo = TSFileCache;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		12AC5ED818FD8BB00021C767 /* TSFileCache.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TSFileCache.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		12AC5EDB18FD8BB00021C767 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		12AC5EDD18FD8BB00021C767 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		12AC5EDF18FD8BB00021C767 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		12AC5EE318FD8BB00021C767 /* TSFileCache-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TSFileCache-Info.plist"; sourceTree = "<group>"; };
+		12AC5EE518FD8BB00021C767 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		12AC5EE718FD8BB00021C767 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		12AC5EE918FD8BB00021C767 /* TSFileCache-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TSFileCache-Prefix.pch"; sourceTree = "<group>"; };
+		12AC5EEA18FD8BB00021C767 /* TSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSAppDelegate.h; sourceTree = "<group>"; };
+		12AC5EEB18FD8BB00021C767 /* TSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSAppDelegate.m; sourceTree = "<group>"; };
+		12AC5EED18FD8BB00021C767 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		12AC5EF318FD8BB00021C767 /* TSFileCacheTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TSFileCacheTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		12AC5EF418FD8BB00021C767 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		12AC5EFC18FD8BB00021C767 /* TSFileCacheTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TSFileCacheTests-Info.plist"; sourceTree = "<group>"; };
+		12AC5EFE18FD8BB00021C767 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		12AC5F0018FD8BB00021C767 /* TSFileCacheTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSFileCacheTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		12AC5ED518FD8BB00021C767 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12AC5EDE18FD8BB00021C767 /* CoreGraphics.framework in Frameworks */,
+				12AC5EE018FD8BB00021C767 /* UIKit.framework in Frameworks */,
+				12AC5EDC18FD8BB00021C767 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12AC5EF018FD8BB00021C767 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12AC5EF518FD8BB00021C767 /* XCTest.framework in Frameworks */,
+				12AC5EF718FD8BB00021C767 /* UIKit.framework in Frameworks */,
+				12AC5EF618FD8BB00021C767 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		12AC5ECF18FD8BB00021C767 = {
+			isa = PBXGroup;
+			children = (
+				12AC5EE118FD8BB00021C767 /* TSFileCache */,
+				12AC5EFA18FD8BB00021C767 /* TSFileCacheTests */,
+				12AC5EDA18FD8BB00021C767 /* Frameworks */,
+				12AC5ED918FD8BB00021C767 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		12AC5ED918FD8BB00021C767 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				12AC5ED818FD8BB00021C767 /* TSFileCache.app */,
+				12AC5EF318FD8BB00021C767 /* TSFileCacheTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		12AC5EDA18FD8BB00021C767 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				12AC5EDB18FD8BB00021C767 /* Foundation.framework */,
+				12AC5EDD18FD8BB00021C767 /* CoreGraphics.framework */,
+				12AC5EDF18FD8BB00021C767 /* UIKit.framework */,
+				12AC5EF418FD8BB00021C767 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		12AC5EE118FD8BB00021C767 /* TSFileCache */ = {
+			isa = PBXGroup;
+			children = (
+				12AC5EEA18FD8BB00021C767 /* TSAppDelegate.h */,
+				12AC5EEB18FD8BB00021C767 /* TSAppDelegate.m */,
+				12AC5EED18FD8BB00021C767 /* Images.xcassets */,
+				12AC5EE218FD8BB00021C767 /* Supporting Files */,
+			);
+			path = TSFileCache;
+			sourceTree = "<group>";
+		};
+		12AC5EE218FD8BB00021C767 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				12AC5EE318FD8BB00021C767 /* TSFileCache-Info.plist */,
+				12AC5EE418FD8BB00021C767 /* InfoPlist.strings */,
+				12AC5EE718FD8BB00021C767 /* main.m */,
+				12AC5EE918FD8BB00021C767 /* TSFileCache-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		12AC5EFA18FD8BB00021C767 /* TSFileCacheTests */ = {
+			isa = PBXGroup;
+			children = (
+				12AC5F0018FD8BB00021C767 /* TSFileCacheTests.m */,
+				12AC5EFB18FD8BB00021C767 /* Supporting Files */,
+			);
+			path = TSFileCacheTests;
+			sourceTree = "<group>";
+		};
+		12AC5EFB18FD8BB00021C767 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				12AC5EFC18FD8BB00021C767 /* TSFileCacheTests-Info.plist */,
+				12AC5EFD18FD8BB00021C767 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		12AC5ED718FD8BB00021C767 /* TSFileCache */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12AC5F0418FD8BB00021C767 /* Build configuration list for PBXNativeTarget "TSFileCache" */;
+			buildPhases = (
+				12AC5ED418FD8BB00021C767 /* Sources */,
+				12AC5ED518FD8BB00021C767 /* Frameworks */,
+				12AC5ED618FD8BB00021C767 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TSFileCache;
+			productName = TSFileCache;
+			productReference = 12AC5ED818FD8BB00021C767 /* TSFileCache.app */;
+			productType = "com.apple.product-type.application";
+		};
+		12AC5EF218FD8BB00021C767 /* TSFileCacheTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12AC5F0718FD8BB00021C767 /* Build configuration list for PBXNativeTarget "TSFileCacheTests" */;
+			buildPhases = (
+				12AC5EEF18FD8BB00021C767 /* Sources */,
+				12AC5EF018FD8BB00021C767 /* Frameworks */,
+				12AC5EF118FD8BB00021C767 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				12AC5EF918FD8BB00021C767 /* PBXTargetDependency */,
+			);
+			name = TSFileCacheTests;
+			productName = TSFileCacheTests;
+			productReference = 12AC5EF318FD8BB00021C767 /* TSFileCacheTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		12AC5ED018FD8BB00021C767 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = TS;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Tomasz Szulc";
+				TargetAttributes = {
+					12AC5EF218FD8BB00021C767 = {
+						TestTargetID = 12AC5ED718FD8BB00021C767;
+					};
+				};
+			};
+			buildConfigurationList = 12AC5ED318FD8BB00021C767 /* Build configuration list for PBXProject "TSFileCache" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 12AC5ECF18FD8BB00021C767;
+			productRefGroup = 12AC5ED918FD8BB00021C767 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				12AC5ED718FD8BB00021C767 /* TSFileCache */,
+				12AC5EF218FD8BB00021C767 /* TSFileCacheTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		12AC5ED618FD8BB00021C767 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12AC5EE618FD8BB00021C767 /* InfoPlist.strings in Resources */,
+				12AC5EEE18FD8BB00021C767 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12AC5EF118FD8BB00021C767 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12AC5EFF18FD8BB00021C767 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		12AC5ED418FD8BB00021C767 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12AC5EE818FD8BB00021C767 /* main.m in Sources */,
+				12AC5EEC18FD8BB00021C767 /* TSAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12AC5EEF18FD8BB00021C767 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12AC5F0118FD8BB00021C767 /* TSFileCacheTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		12AC5EF918FD8BB00021C767 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 12AC5ED718FD8BB00021C767 /* TSFileCache */;
+			targetProxy = 12AC5EF818FD8BB00021C767 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		12AC5EE418FD8BB00021C767 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				12AC5EE518FD8BB00021C767 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		12AC5EFD18FD8BB00021C767 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				12AC5EFE18FD8BB00021C767 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		12AC5F0218FD8BB00021C767 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		12AC5F0318FD8BB00021C767 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		12AC5F0518FD8BB00021C767 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TSFileCache/TSFileCache-Prefix.pch";
+				INFOPLIST_FILE = "TSFileCache/TSFileCache-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		12AC5F0618FD8BB00021C767 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TSFileCache/TSFileCache-Prefix.pch";
+				INFOPLIST_FILE = "TSFileCache/TSFileCache-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		12AC5F0818FD8BB00021C767 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TSFileCache.app/TSFileCache";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TSFileCache/TSFileCache-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "TSFileCacheTests/TSFileCacheTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		12AC5F0918FD8BB00021C767 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TSFileCache.app/TSFileCache";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TSFileCache/TSFileCache-Prefix.pch";
+				INFOPLIST_FILE = "TSFileCacheTests/TSFileCacheTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		12AC5ED318FD8BB00021C767 /* Build configuration list for PBXProject "TSFileCache" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12AC5F0218FD8BB00021C767 /* Debug */,
+				12AC5F0318FD8BB00021C767 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		12AC5F0418FD8BB00021C767 /* Build configuration list for PBXNativeTarget "TSFileCache" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12AC5F0518FD8BB00021C767 /* Debug */,
+				12AC5F0618FD8BB00021C767 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		12AC5F0718FD8BB00021C767 /* Build configuration list for PBXNativeTarget "TSFileCacheTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12AC5F0818FD8BB00021C767 /* Debug */,
+				12AC5F0918FD8BB00021C767 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 12AC5ED018FD8BB00021C767 /* Project object */;
+}
