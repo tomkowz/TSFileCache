@@ -19,59 +19,52 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    /// Test TSFileCache
-//    [self testTSFileCacheExample];
-    /// Test image cache
-    [self testTSImageCacheExample];
+    /// Test of TSFileCache
+    [self firstTest];
+    
+    /// Test of TSImageCache - It's example of subclassing. TSImageCache has interface prepared to store and read images like icons.
+//    [self secondTest];
     return YES;
 }
 
-- (void)testTSFileCacheExample {
+- (void)firstTest {
     TSFileCache *cache = [TSFileCache cacheInTemporaryDirectoryWithRelativeURL:[NSURL URLWithString:@"/FileCache"]];
+//    [TSFileCache setSharedInstance:cache]; /// cache should be set as singleton
     [cache prepare:nil];
     
     UIImage *image = [UIImage imageNamed:@"image.png"];
     NSData *data = UIImagePNGRepresentation(image);
+    /// save on disk
     for (int i = 0; i < 1000; i++) {
         [cache storeData:data forKey:[NSString stringWithFormat:@"image_%d", i]];
     }
     
+    /// read from disk
     for (int i = 0; i < 1000; i++) {
-        NSData *data = [cache dataForKey:[NSString stringWithFormat:@"image_%d", i]];
+        [cache dataForKey:[NSString stringWithFormat:@"image_%d", i]];
+        
     }
     
+    /// read from cache
     for (int i = 0; i < 1000; i++) {
-        NSData *data = [cache dataForKey:[NSString stringWithFormat:@"image_%d", i]];
+        [cache dataForKey:[NSString stringWithFormat:@"image_%d", i]];
     }
 }
 
-- (void)testTSImageCacheExample {
-    [self testCacheImage];
-    [self testReadImageFromCache];
-    [self testReadImageFromCache];
-    [self testCacheImage2];
-    [self testReadImageFromCache];
-}
-
-- (void)testCacheImage {
+- (void)secondTest {
     TSImageCache *imageCache = [TSImageCache sharedInstance];
     UIImage *image = [UIImage imageNamed:@"image.png"];
+    /// store images
     for (int i = 0; i < 1000; i++) {
         [imageCache cacheImage:image forKey:[NSString stringWithFormat:@"image%d", i]];
     }
-}
 
-- (void)testReadImageFromCache {
-    TSImageCache *imageCache = [TSImageCache sharedInstance];
+    /// read from disk
     for (int i = 0; i < 1000; i++) {
-        UIImage *image = [imageCache imageForKey:[NSString stringWithFormat:@"image%d", i]];
-        /// do something with image
+        [imageCache imageForKey:[NSString stringWithFormat:@"image%d", i]];
     }
-}
-
-- (void)testCacheImage2 {
-    TSImageCache *imageCache = [TSImageCache sharedInstance];
-    UIImage *image = [UIImage imageNamed:@"image.png"];
+    
+    /// read from cache
     for (int i = 0; i < 1000; i += 2) {
         [imageCache cacheImage:image forKey:[NSString stringWithFormat:@"image%d", i]];
     }
