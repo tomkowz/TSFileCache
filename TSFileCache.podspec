@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.version      = "1.0"
   s.summary      = "Generic class that allows you to cahce files on device's disk. Need to cache images or other files? Check this. Easy to subclass and reuse."
 
-  s.homepage     = "http://github.com/tomkowz/TSFileCache"
+  s.homepage     = "https://github.com/tomkowz/TSFileCache"
 
   s.license      = { :type => 'Apache', :file => 'LICENSE' }
 
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, '6.0'
 
-  s.source       = { :git => "http://github.com/tomkowz/TSFileCache.git", :tag => "1.0" }
+  s.source       = { :git => "https://github.com/tomkowz/TSFileCache.git", :tag => "1.0" }
 
   s.source_files  = 'Classes', 'Classes/**/*.{h,m}'
 
