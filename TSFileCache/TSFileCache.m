@@ -7,16 +7,36 @@
 //
 
 #import "TSFileCache.h"
-#import "TSFileCache+Prepare.h"
-#import "TSFileCache+StorageManager.h"
-#import "NSURL+TSFileCache.h"
 
-#pragma mark - TSFileCache
+@interface NSURL (TSFileCache)
+- (NSURL *)_tsfc_appendURL:(NSURL *)url;
+@end
+
+static NSString * const TSFileCacheErrorDomain = @"TSFileCacheErrorDomain";
+@interface NSError (TSFileCache)
++ (NSError *)_tsfc_errorWithDescription:(NSString *)description;
+@end
+
+
+@interface TSFileCache (Prepare)
+- (void)_prepareWithDirectoryAtURL:(NSURL *)directoryURL error:(NSError *__autoreleasing *)error;
+@end
+
+@interface TSFileCache (StorageManager)
+- (NSData *)_readFileAtURL:(NSURL *)fileURL;
+- (void)_writeData:(NSData *)data atURL:(NSURL *)fileURL;
+- (void)_clearDirectoryAtURL:(NSURL *)storageURL;
+@end
+
+@interface TSFileCache (Helpers)
++ (NSURL *)_temporaryDirectoryURL;
+@end
+
+
 @implementation TSFileCache {
     NSURL *_directoryURL;
     NSCache *_cache;
 }
-
 
 #pragma mark - Initializers
 + (instancetype)cacheForURL:(NSURL *)directoryURL {
@@ -47,7 +67,7 @@
 #pragma mark - Externals
 - (void)prepare:(NSError *__autoreleasing *)error {
     NSError *localError = nil;
-    [self prepareWithDirectory:_directoryURL error:&localError];
+    [self _prepareWithDirectoryAtURL:_directoryURL error:&localError];
     if (!localError) {
         
     } else if (localError && error) {
@@ -79,10 +99,85 @@
     }
 }
 
+@end
 
-#pragma mark - Helpers
+@implementation TSFileCache (Prepare)
+- (void)_prepareWithDirectoryAtURL:(NSURL *)directoryURL error:(NSError *__autoreleasing *)error {
+    NSError *localError = nil;
+    /// Check if file exists and create directory if necessary
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    BOOL isDirectory = NO;
+    BOOL fileExists = [fileManager fileExistsAtPath:[directoryURL path] isDirectory:&isDirectory];
+    if (fileExists) {
+        if (!isDirectory) {
+            localError = [NSError _tsfc_errorWithDescription:[NSString stringWithFormat:@"File at path %@ exists and it is not directory. Cannot create directory here.", [directoryURL path]]];
+        }
+    } else {
+        NSError *createDirectoryError = nil;
+        [fileManager createDirectoryAtURL:directoryURL withIntermediateDirectories:YES attributes:nil error:&createDirectoryError];
+        if (createDirectoryError) {
+            localError = [NSError _tsfc_errorWithDescription:createDirectoryError.localizedDescription];
+        }
+    }
+    
+    /// Return error if occured
+    if (localError && error) {
+        *error = localError;
+    }
+}
+
+@end
+
+@implementation TSFileCache (StorageManager)
+
+- (NSData *)_readFileAtURL:(NSURL *)fileURL {
+    return [NSData dataWithContentsOfURL:fileURL];
+}
+
+- (void)_writeData:(NSData *)data atURL:(NSURL *)fileURL {
+    [data writeToURL:fileURL atomically:YES];
+}
+
+- (void)_clearDirectoryAtURL:(NSURL *)directoryURL {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSDirectoryEnumerator *enumerator = [fileManager enumeratorAtPath:[directoryURL path]];
+    
+    NSString *fileName = nil;
+    while (fileName = [enumerator nextObject]) {
+        [fileManager removeItemAtPath:[[directoryURL URLByAppendingPathComponent:fileName] path] error:nil];
+    }
+}
+
+@end
+
+
+@implementation TSFileCache (Helpers)
+
 + (NSURL *)_temporaryDirectoryURL {
     return [NSURL fileURLWithPath:NSTemporaryDirectory()];
+}
+
+@end
+
+
+@implementation NSURL (TSFileCache)
+
+- (NSURL *)_tsfc_appendURL:(NSURL *)url {
+    NSString *absoluteString = [url absoluteString];
+    if ([absoluteString rangeOfString:@"/"].location == 0) {
+        absoluteString = [absoluteString substringFromIndex:1];
+    }
+    
+    return [self URLByAppendingPathComponent:absoluteString];
+}
+
+@end
+
+@implementation NSError (TSFileCache)
+
++ (NSError *)_tsfc_errorWithDescription:(NSString *)description {
+    NSDictionary *info = @{NSLocalizedDescriptionKey : description};
+    return [NSError errorWithDomain:TSFileCacheErrorDomain code:-1 userInfo:info];
 }
 
 @end
