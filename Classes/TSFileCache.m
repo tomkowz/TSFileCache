@@ -50,7 +50,7 @@ static TSFileCache *_sharedInstance = nil;
 #pragma mark - Initializers
 + (instancetype)cacheForURL:(NSURL *)directoryURL {
     NSParameterAssert(directoryURL && [directoryURL isFileURL]);
-    return [[[self class] alloc] _initWithDirectoryURL:directoryURL];
+    return [[self alloc] _initWithDirectoryURL:directoryURL];
 }
 
 + (instancetype)cacheInTemporaryDirectoryWithRelativeURL:(NSURL *)relativeURL {
