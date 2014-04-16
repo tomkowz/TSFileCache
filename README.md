@@ -3,6 +3,13 @@ TSFileCache
 `TSFileCache` is a simple generic class used to cache some sort of files on the disk - files that will be used later as e.g. icons in the cells of the table view, etc.
 
 
+Donate
+=========
+If you like it... :)
+
+<a href="https://flattr.com/submit/auto?user_id=tomkowz&url=http%3A%2F%2Fgithub.com%2Ftomkowz%2FTSFileCache" target="_blank"><img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0"></a>
+
+
 How it works?
 =========
 You create instance of a class by one of two designed initializers. You can create cache that uses some directory with method `cacheForURL:` but you can also (and I recommend that option) you method `cacheInTemporaryDirectoryWithRelativeURL:` which uses directory inside sandbox's temporary directory which is managed by system so you can forget about cleaning this directory.
