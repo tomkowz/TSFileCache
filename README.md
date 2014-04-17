@@ -52,6 +52,12 @@ To read data for key use `dataForKey:` method. If file for key doesn't exists ni
     
 #### `dataForKey:`
     NSData *data = [cache dataForKey:@"key"];
+    
+
+If you want to check if key is set and if file for this key is cached already use `existsDataForKey:` method instead of `dataForKey:`. The reason for that is that you may don't know how big is the cached file and it might take a lot of time to read this file. Instead there is only simply check if file exists.
+    
+#### `existsDataForKey:`
+	BOOL exists = [cache existsDataForKey:@"key"];
 
 
 `TSFileCache` is using `NSCache` internally so when data is read first time value for this key is stored in `NSCache` and next time if data is still in the cache it will be used rather than reading again from the disk. System controlls `NSCache` instance and data can be removed from the cache anytime, and if you want to read again this data which was cached and now it is not `TSFileCache` will read this data from the disk and caches it again.
@@ -69,7 +75,19 @@ CocoaPods
 =========
 Class is available via the [CocoaPods](http://cocoapods.org).
 
-    pod 'TSFileCache', '~> 1.0'    
+    pod 'TSFileCache', '~> 1.0.1'
+    
+Logs
+=====
+**1.0.1**:
+
+- added `existsDataForKey:` method to obtain if value for specified key exists. Added because of performance.
+
+- `directoryURL` property is not exposed as readonly (was hidden, but it may be useful to know path to directory with cached files),
+
+**1.0**:
+
+- *TSFileCache* released.    
 
 License
 ======
