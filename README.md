@@ -65,7 +65,7 @@ If you want to check if key is set and if file for this key is cached already us
 	_cache[key] = data; /// instead of [_cache storeData:data forKey:key];
 	id readData = _cache[key]; /// instead of [_cache dataForKey:key];
 	
-If you want to subclass `TSFileCache` and want to use this mechanism with other type as *NSData* you have to create the same methods but with other types - Check example.
+If you want to subclass `TSFileCache` and want to use this mechanism with other type than *NSData* you have to create the same methods but with other types - Check example.
 
 `TSFileCache` is using `NSCache` internally so when data is read first time value for this key is stored in `NSCache` and next time if data is still in the cache it will be used rather than reading again from the disk. System controlls `NSCache` instance and data can be removed from the cache anytime, and if you want to read again this data which was cached and now it is not `TSFileCache` will read this data from the disk and caches it again.
 
