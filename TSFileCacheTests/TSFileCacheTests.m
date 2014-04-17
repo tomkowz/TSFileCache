@@ -118,6 +118,14 @@ static NSString * const mainTestDirectory = @"aslkdjfsalkdjfskfdl-sdfsasdfsalfkj
 }
 
 
+#pragma mark - Subscript tests
+- (void)testThatDataCanBeSetViaSubscript {
+    [_fileCache prepare:nil];
+    _fileCache[@"data"] = [NSData data];
+    XCTAssertNotNil(_fileCache[@"data"], @"");
+}
+
+
 #pragma mark - clean
 - (void)testThatDataCacheShouldBeEmpty {
     NSString *string = @"This is a string which will be stored and removed later";

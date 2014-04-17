@@ -116,6 +116,18 @@ static TSFileCache *_sharedInstance = nil;
 
 @end
 
+@implementation TSFileCache (Subscript)
+
+- (NSData *)objectForKeyedSubscript:(NSString *)key {
+    return [self dataForKey:key];
+}
+
+- (void)setObject:(NSData *)data forKeyedSubscript:(NSString *)key {
+    [self storeData:data forKey:key];
+}
+
+@end
+
 @implementation TSFileCache (Prepare)
 - (void)_prepareWithDirectoryAtURL:(NSURL *)directoryURL error:(NSError *__autoreleasing *)error {
     NSError *localError = nil;

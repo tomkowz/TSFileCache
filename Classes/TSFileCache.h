@@ -28,6 +28,7 @@
 + (instancetype)sharedInstance;
 
 
+
 /// Instance which has set directoryURL. Method does not create directory.
 + (instancetype)cacheForURL:(NSURL *)directoryURL;
 
@@ -42,6 +43,8 @@
 /// Clean container if exists
 - (void)clear;
 
+
+
 /// Returns data for key. Nil if key is not set
 - (NSData *)dataForKey:(NSString *)key;
 
@@ -51,4 +54,11 @@
 /// Check if data exists for key.
 - (BOOL)existsDataForKey:(NSString *)key;
 
+@end
+
+
+/// object[@"key"] = ...;, NSData *value = object[@"key"];
+@interface TSFileCache (Subscript)
+- (NSData *)objectForKeyedSubscript:(NSString *)key;
+- (void)setObject:(NSData *)data forKeyedSubscript:(NSString *)key;
 @end

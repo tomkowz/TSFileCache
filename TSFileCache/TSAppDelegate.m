@@ -49,6 +49,15 @@
     for (int i = 0; i < 1000; i++) {
         [cache dataForKey:[NSString stringWithFormat:@"image_%d", i]];
     }
+    
+    /// subscript test
+    NSString *str = @"This is a string to save";
+    NSData *strData = [str dataUsingEncoding:NSUTF8StringEncoding];
+    cache[@"str"] = strData;
+    
+    NSData *readStringData = cache[@"str"];
+    NSData *readStringDataTheSame = [cache dataForKey:@"str"];
+    NSLog(@"d1 = %lu, d2 = %lu", (unsigned long)[readStringData length], (unsigned long)[readStringDataTheSame length]);
 }
 
 - (void)secondTest {
