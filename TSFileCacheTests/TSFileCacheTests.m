@@ -59,6 +59,11 @@ static NSString * const mainTestDirectory = @"aslkdjfsalkdjfskfdl-sdfsasdfsalfkj
     XCTAssertThrows([TSFileCache cacheInTemporaryDirectoryWithRelativeURL:nil], @"");
 }
 
+#pragma mark - directoryURL
+- (void)testThatDirectoryURLPropertyIsNotNil {
+    XCTAssertNotNil(_fileCache.directoryURL, @"");
+}
+
 
 #pragma mark - setSharedInstance:
 - (void)testThatSharedInstanceShouldBeSet {

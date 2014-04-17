@@ -34,7 +34,6 @@ static NSString * const TSFileCacheErrorDomain = @"TSFileCacheErrorDomain";
 
 
 @implementation TSFileCache {
-    NSURL *_directoryURL;
     NSCache *_cache;
 }
 
