@@ -26,3 +26,10 @@
 - (void)storeData:(NSData *)data forKey:(NSString *)key __TSFileCacheUnavailable__;
 
 @end
+
+@interface TSImageCache (Subscript)
+
+- (void)setObject:(UIImage *)image forKeyedSubscript:(NSString *)key;
+- (UIImage *)objectForKeyedSubscript:(NSString *)key;
+
+@end

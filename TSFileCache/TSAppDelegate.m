@@ -77,6 +77,12 @@
     for (int i = 0; i < 1000; i += 2) {
         [imageCache cacheImage:image forKey:[NSString stringWithFormat:@"image%d", i]];
     }
+    
+    /// subscript test
+    UIImage *img = imageCache[@"image1"];
+    imageCache[@"image99999"] = img;
+    UIImage *img2 = imageCache[@"image99999"];
+    NSLog(@"image is not nil: %d", img2 != nil);
 }
 
 @end

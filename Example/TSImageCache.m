@@ -35,3 +35,15 @@ static TSImageCache *_sharedInstance = nil;
 }
 
 @end
+
+@implementation TSImageCache (Subscript)
+
+- (void)setObject:(UIImage *)image forKeyedSubscript:(NSString *)key {
+    [self cacheImage:image forKey:key];
+}
+
+- (UIImage *)objectForKeyedSubscript:(NSString *)key {
+    return [self imageForKey:key];
+}
+
+@end
