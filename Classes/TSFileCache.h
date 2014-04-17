@@ -4,6 +4,7 @@
 //
 //  Created by Tomasz Szulc on 15/04/14.
 //  Copyright (c) 2014 Tomasz Szulc. All rights reserved.
+//  http://github.com/tomkowz/TSFileCache
 //
 
 #import <Foundation/Foundation.h>
