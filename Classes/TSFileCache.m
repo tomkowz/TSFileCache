@@ -23,13 +23,10 @@ static NSString * const TSFileCacheErrorDomain = @"TSFileCacheErrorDomain";
 @end
 
 @interface TSFileCache (StorageManager)
+- (BOOL)_existsFileAtURL:(NSURL *)fileURL;
 - (NSData *)_readFileAtURL:(NSURL *)fileURL;
 - (void)_writeData:(NSData *)data atURL:(NSURL *)fileURL;
 - (void)_clearDirectoryAtURL:(NSURL *)storageURL;
-@end
-
-@interface TSFileCache (Helpers)
-+ (NSURL *)_temporaryDirectoryURL;
 @end
 
 
@@ -61,8 +58,7 @@ static TSFileCache *_sharedInstance = nil;
 
 
 #pragma mark - Initialization
-- (instancetype)_initWithDirectoryURL:(NSURL *)directoryURL
-{
+- (instancetype)_initWithDirectoryURL:(NSURL *)directoryURL {
     self = [super init];
     if (self) {
         _directoryURL = directoryURL;
@@ -76,9 +72,8 @@ static TSFileCache *_sharedInstance = nil;
 - (void)prepare:(NSError *__autoreleasing *)error {
     NSError *localError = nil;
     [self _prepareWithDirectoryAtURL:_directoryURL error:&localError];
-    if (!localError) {
-        
-    } else if (localError && error) {
+    /// log error if occured
+    if (localError && error) {
         *error = localError;
     }
 }
@@ -92,7 +87,7 @@ static TSFileCache *_sharedInstance = nil;
     NSData *data = nil;
     if (key) {
         data = [_cache objectForKey:key];
-        if (!data) {
+        if (!data && [self existsDataForKey:key]) {
             data = [self _readFileAtURL:[_directoryURL URLByAppendingPathComponent:key]];
             if (data)
                 [_cache setObject:data forKey:key];
@@ -105,6 +100,18 @@ static TSFileCache *_sharedInstance = nil;
     if (data && key) {
         [self _writeData:data atURL:[_directoryURL URLByAppendingPathComponent:key]];
     }
+}
+
+- (BOOL)existsDataForKey:(NSString *)key {
+    BOOL exists = NO;
+    if (key) {
+        exists = [self _existsFileAtURL:[_directoryURL URLByAppendingPathComponent:key]];
+    }
+    return exists;
+}
+
++ (NSURL *)_temporaryDirectoryURL {
+    return [NSURL fileURLWithPath:NSTemporaryDirectory()];
 }
 
 @end
@@ -138,6 +145,10 @@ static TSFileCache *_sharedInstance = nil;
 
 @implementation TSFileCache (StorageManager)
 
+- (BOOL)_existsFileAtURL:(NSURL *)fileURL {
+    return [[NSFileManager defaultManager] fileExistsAtPath:[fileURL path]];
+}
+
 - (NSData *)_readFileAtURL:(NSURL *)fileURL {
     return [[NSData alloc] initWithContentsOfURL:fileURL options:NSDataReadingUncached error:nil];
 }
@@ -154,15 +165,6 @@ static TSFileCache *_sharedInstance = nil;
     while (fileName = [enumerator nextObject]) {
         [fileManager removeItemAtPath:[[directoryURL URLByAppendingPathComponent:fileName] path] error:nil];
     }
-}
-
-@end
-
-
-@implementation TSFileCache (Helpers)
-
-+ (NSURL *)_temporaryDirectoryURL {
-    return [NSURL fileURLWithPath:NSTemporaryDirectory()];
 }
 
 @end

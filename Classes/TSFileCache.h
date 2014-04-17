@@ -48,5 +48,7 @@
 /// Store data for passed key.
 - (void)storeData:(NSData *)data forKey:(NSString *)key;
 
+/// Check if data exists for key.
+- (BOOL)existsDataForKey:(NSString *)key;
 
 @end
