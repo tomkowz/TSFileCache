@@ -126,6 +126,14 @@ static NSString * const mainTestDirectory = @"aslkdjfsalkdjfskfdl-sdfsasdfsalfkj
 }
 
 
+#pragma mark - existsObjectForKey:
+- (void)testThatObjectExistsForKey {
+    [_fileCache prepare:nil];
+    _fileCache[@"a"] = [NSData data];
+    XCTAssertTrue(_fileCache[@"a"], @"");
+    XCTAssertFalse(_fileCache[@"b"], @"");
+}
+
 #pragma mark - clean
 - (void)testThatDataCacheShouldBeEmpty {
     NSString *string = @"This is a string which will be stored and removed later";
