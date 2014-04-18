@@ -106,9 +106,9 @@ static TSFileCache *_sharedInstance = nil;
 - (NSString *)storeDataForAnonymousKey:(NSData *)data {
     NSString *key = nil;
     if (data) {
-        while (!key || (key && [self existsDataForKey:key])) {
+        do {
             key = [self _generateKey];
-        }
+        } while (!key || (key && [self existsDataForKey:key]));
         
         [self storeData:data forKey:key];
     }
