@@ -55,6 +55,12 @@ To read data for key use `dataForKey:` method. If file for key doesn't exists ni
     
 
 If you want to check if key is set and if file for this key is cached already use `existsDataForKey:` method instead of `dataForKey:`. The reason for that is that you may don't know how big is the cached file and it might take a lot of time to read this file. Instead there is only simply check if file exists.
+
+#### `storeDataForUndefinedKey:`
+    NSString *key = [cache storeDataForUndefinedKey:data];
+
+You can also use method `-storeDataForUndefinedKey:` to store data if you don't know key with which data should be stored. The key will be generated and returned by method. Key is unique.
+
     
 #### `existsDataForKey:`
 	BOOL exists = [cache existsDataForKey:@"key"];
