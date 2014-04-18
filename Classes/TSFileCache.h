@@ -50,7 +50,9 @@
 /// Store data for passed key.
 - (void)storeData:(NSData *)data forKey:(NSString *)key;
 
-/// Store data for undefined key. Returns key.
+/**
+ Store data for undefined key. Returns key. Key is unique.
+ */
 - (NSString *)storeDataForUndefinedKey:(NSData *)data;
 
 /// Check if data exists for key.
