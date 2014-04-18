@@ -92,6 +92,13 @@ Class is available via the [CocoaPods](http://cocoapods.org).
     
 Logs
 =====
+**1.0.2**:
+
+- implemented `-storeDataForUndefinedKey:` method.
+
+- `-prepare:` method returns BOOL, earlier was void. It's because static code analyse warnings.
+
+
 **1.0.1**:
 
 - implemented subscripting. *TSFileCache* instance works as dictionary. instance[@"key"]; id data = instance[@"key"];
