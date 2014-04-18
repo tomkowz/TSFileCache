@@ -103,7 +103,7 @@ static TSFileCache *_sharedInstance = nil;
     }
 }
 
-- (NSString *)storeDataForAnonymousKey:(NSData *)data {
+- (NSString *)storeDataForUndefinedKey:(NSData *)data {
     NSString *key = nil;
     if (data) {
         do {

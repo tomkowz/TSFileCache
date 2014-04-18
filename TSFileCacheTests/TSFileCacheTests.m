@@ -124,7 +124,7 @@ static NSString * const mainTestDirectory = @"aslkdjfsalkdjfskfdl-sdfsasdfsalfkj
 - (void)testThatDataIsStoredCorrectlyAndKeyIsReturned {
     NSData *data = [@"This is a string to save" dataUsingEncoding:NSUTF8StringEncoding];
     [_fileCache prepare:nil];
-    NSString *key = [_fileCache storeDataForAnonymousKey:data];
+    NSString *key = [_fileCache storeDataForUndefinedKey:data];
     XCTAssertNotNil(key, @"");
     XCTAssertNotNil(_fileCache[key], @"");
 }
