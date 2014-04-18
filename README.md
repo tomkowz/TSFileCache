@@ -84,11 +84,16 @@ I also added some macro which may be helpful during subclassing because probably
 
     + (instancetype)cacheInTemporaryDirectoryWithRelativeURL:(NSURL *)relativeURL __TSFileCacheUnavailable__;
     
+#### `allKeys`
+	NSArray *keys = [cache allKeys];
+	
+Use `allKeys` method to get all keys inside cache directory.
+    
 CocoaPods
 =========
 Class is available via the [CocoaPods](http://cocoapods.org).
 
-    pod 'TSFileCache', '~> 1.0.1'
+    pod 'TSFileCache', '~> 1.0.2'
     
 Logs
 =====

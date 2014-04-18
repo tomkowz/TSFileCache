@@ -179,7 +179,11 @@ static NSString * const mainTestDirectory = @"aslkdjfsalkdjfskfdl-sdfsasdfsalfkj
     }
     
     XCTAssertEqual([_fileCache allKeys].count, numberOfItems, @"");
+}
 
+- (void)testThatEmptyArrayShouldBeReturnedIfInContainerIsZeroElements {
+    [_fileCache prepare:nil];
+    XCTAssertNotNil([_fileCache allKeys], @"");
 }
 
 @end
