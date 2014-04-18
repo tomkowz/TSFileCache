@@ -88,7 +88,13 @@ I also added some macro which may be helpful during subclassing because probably
 	NSArray *keys = [cache allKeys];
 	
 Use `allKeys` method to get all keys inside cache directory.
+
+#### `-attributesOfFileForKey:error:`
+    NSDictionary *attributes = [_fileCache attributesOfFileForKey:key error:nil];
+
+Use this method to get attributes of cached files.
     
+  
 CocoaPods
 =========
 Class is available via the [CocoaPods](http://cocoapods.org).
