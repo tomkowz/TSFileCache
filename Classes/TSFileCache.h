@@ -58,6 +58,9 @@
 /// Check if data exists for key.
 - (BOOL)existsDataForKey:(NSString *)key;
 
+
+- (NSArray *)allKeys;
+
 @end
 
 

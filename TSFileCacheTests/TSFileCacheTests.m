@@ -167,4 +167,19 @@ static NSString * const mainTestDirectory = @"aslkdjfsalkdjfskfdl-sdfsasdfsalfkj
     return [[NSURL fileURLWithPath:NSTemporaryDirectory()] URLByAppendingPathComponent:mainTestDirectory];
 }
 
+
+#pragma mark - allKeys
+- (void)testThatCorrectKeysShouldBeReturned {
+    [_fileCache prepare:nil];
+    NSData *data = [@"this is a string" dataUsingEncoding:NSUTF8StringEncoding];
+
+    NSUInteger numberOfItems = 10;
+    for (int i = 0; i < numberOfItems; i++) {
+        [_fileCache storeDataForUndefinedKey:data];
+    }
+    
+    XCTAssertEqual([_fileCache allKeys].count, numberOfItems, @"");
+
+}
+
 @end

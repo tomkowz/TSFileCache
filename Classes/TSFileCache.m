@@ -27,6 +27,7 @@ static NSString * const TSFileCacheErrorDomain = @"TSFileCacheErrorDomain";
 - (NSData *)_readFileAtURL:(NSURL *)fileURL;
 - (void)_writeData:(NSData *)data atURL:(NSURL *)fileURL;
 - (void)_clearDirectoryAtURL:(NSURL *)storageURL;
+- (NSArray *)_allFileNamesAtURL:(NSURL *)directoryURL;
 @end
 
 
@@ -123,6 +124,10 @@ static TSFileCache *_sharedInstance = nil;
     return exists;
 }
 
+- (NSArray *)allKeys {
+    return [self _allFileNamesAtURL:_directoryURL];
+}
+
 + (NSURL *)_temporaryDirectoryURL {
     return [NSURL fileURLWithPath:NSTemporaryDirectory()];
 }
@@ -190,12 +195,17 @@ static TSFileCache *_sharedInstance = nil;
 
 - (void)_clearDirectoryAtURL:(NSURL *)directoryURL {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSDirectoryEnumerator *enumerator = [fileManager enumeratorAtPath:[directoryURL path]];
-    
-    NSString *fileName = nil;
-    while (fileName = [enumerator nextObject]) {
+    NSArray *fileNames = [self _allFileNamesAtURL:directoryURL];
+    for (NSString *fileName in fileNames) {
         [fileManager removeItemAtPath:[[directoryURL URLByAppendingPathComponent:fileName] path] error:nil];
     }
+}
+
+- (NSArray *)_allFileNamesAtURL:(NSURL *)directoryURL {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSDirectoryEnumerator *enumerator = [fileManager enumeratorAtPath:[directoryURL path]];
+    
+    return [[enumerator allObjects] copy];
 }
 
 @end
