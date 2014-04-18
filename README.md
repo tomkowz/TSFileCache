@@ -111,6 +111,9 @@ Logs
 
 - implemented `-allKeys` method.
 
+- implemented `-attributesOfFileForKey:error:`.
+
+
 **1.0.1**:
 
 - implemented subscripting. *TSFileCache* instance works as dictionary. instance[@"key"]; id data = instance[@"key"];
