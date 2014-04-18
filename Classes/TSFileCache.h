@@ -40,9 +40,8 @@
 /// Prepare instance to work. Call after init.
 - (BOOL)prepare:(NSError **)error;
 
-/// Clean container if exists
+/// Clear container if exists - directory will still exists
 - (void)clear;
-
 
 
 /// Returns data for key. Nil if key is not set
