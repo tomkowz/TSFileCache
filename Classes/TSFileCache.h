@@ -38,7 +38,7 @@
 
 
 /// Prepare instance to work. Call after init.
-- (void)prepare:(NSError **)error;
+- (BOOL)prepare:(NSError **)error;
 
 /// Clean container if exists
 - (void)clear;

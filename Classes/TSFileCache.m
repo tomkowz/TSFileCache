@@ -19,7 +19,7 @@ static NSString * const TSFileCacheErrorDomain = @"TSFileCacheErrorDomain";
 
 
 @interface TSFileCache (Prepare)
-- (void)_prepareWithDirectoryAtURL:(NSURL *)directoryURL error:(NSError *__autoreleasing *)error;
+- (BOOL)_prepareWithDirectoryAtURL:(NSURL *)directoryURL error:(NSError *__autoreleasing *)error;
 @end
 
 @interface TSFileCache (StorageManager)
@@ -69,13 +69,14 @@ static TSFileCache *_sharedInstance = nil;
 
 
 #pragma mark - Externals
-- (void)prepare:(NSError *__autoreleasing *)error {
+- (BOOL)prepare:(NSError *__autoreleasing *)error {
     NSError *localError = nil;
-    [self _prepareWithDirectoryAtURL:_directoryURL error:&localError];
+    BOOL success = [self _prepareWithDirectoryAtURL:_directoryURL error:&localError];
     /// log error if occured
     if (localError && error) {
         *error = localError;
     }
+    return success;
 }
 
 - (void)clear {
@@ -145,7 +146,7 @@ static TSFileCache *_sharedInstance = nil;
 @end
 
 @implementation TSFileCache (Prepare)
-- (void)_prepareWithDirectoryAtURL:(NSURL *)directoryURL error:(NSError *__autoreleasing *)error {
+- (BOOL)_prepareWithDirectoryAtURL:(NSURL *)directoryURL error:(NSError *__autoreleasing *)error {
     NSError *localError = nil;
     /// Check if file exists and create directory if necessary
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -167,6 +168,8 @@ static TSFileCache *_sharedInstance = nil;
     if (localError && error) {
         *error = localError;
     }
+    
+    return (localError == nil);
 }
 
 @end

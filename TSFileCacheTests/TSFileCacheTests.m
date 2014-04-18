@@ -79,8 +79,9 @@ static NSString * const mainTestDirectory = @"aslkdjfsalkdjfskfdl-sdfsasdfsalfkj
 #pragma mark - prepare:
 - (void)testThatPrepareShouldEndWithoutError {
     NSError *prepareError = nil;
-    [_fileCache prepare:&prepareError];
+    BOOL success = [_fileCache prepare:&prepareError];
     XCTAssertNil(prepareError, @"");
+    XCTAssertTrue(success, @"");
 }
 
 - (void)testThatPrepareShouldEndWithErrorBecauseOfExistingFile {
@@ -91,8 +92,9 @@ static NSString * const mainTestDirectory = @"aslkdjfsalkdjfskfdl-sdfsasdfsalfkj
     [data writeToURL:testURL atomically:YES];
     
     NSError *prepareError = nil;
-    [_fileCache prepare:&prepareError];
+    BOOL success = [_fileCache prepare:&prepareError];
     XCTAssertNotNil(prepareError, @"");
+    XCTAssertFalse(success, @"");
 }
 
 
