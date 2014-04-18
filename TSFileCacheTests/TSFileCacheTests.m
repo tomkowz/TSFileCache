@@ -118,6 +118,16 @@ static NSString * const mainTestDirectory = @"aslkdjfsalkdjfskfdl-sdfsasdfsalfkj
 }
 
 
+#pragma mark - storeDataForAnonymousKey:
+- (void)testThatDataIsStoredCorrectlyAndKeyIsReturned {
+    NSData *data = [@"This is a string to save" dataUsingEncoding:NSUTF8StringEncoding];
+    [_fileCache prepare:nil];
+    NSString *key = [_fileCache storeDataForAnonymousKey:data];
+    XCTAssertNotNil(key, @"");
+    XCTAssertNotNil(_fileCache[key], @"");
+}
+
+
 #pragma mark - Subscript tests
 - (void)testThatDataCanBeSetViaSubscript {
     [_fileCache prepare:nil];

@@ -102,6 +102,18 @@ static TSFileCache *_sharedInstance = nil;
     }
 }
 
+- (NSString *)storeDataForAnonymousKey:(NSData *)data {
+    NSString *key = nil;
+    if (data) {
+        while (!key || (key && [self existsDataForKey:key])) {
+            key = [self _generateKey];
+        }
+        
+        [self storeData:data forKey:key];
+    }
+    return key;
+}
+
 - (BOOL)existsDataForKey:(NSString *)key {
     BOOL exists = NO;
     if (key) {
@@ -112,6 +124,10 @@ static TSFileCache *_sharedInstance = nil;
 
 + (NSURL *)_temporaryDirectoryURL {
     return [NSURL fileURLWithPath:NSTemporaryDirectory()];
+}
+
+- (NSString *)_generateKey {
+    return [[NSUUID UUID] UUIDString];
 }
 
 @end

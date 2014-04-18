@@ -51,6 +51,9 @@
 /// Store data for passed key.
 - (void)storeData:(NSData *)data forKey:(NSString *)key;
 
+/// Store data for anonymous key. Returns key.
+- (NSString *)storeDataForAnonymousKey:(NSData *)data;
+
 /// Check if data exists for key.
 - (BOOL)existsDataForKey:(NSString *)key;
 
@@ -62,3 +65,4 @@
 - (NSData *)objectForKeyedSubscript:(NSString *)key;
 - (void)setObject:(NSData *)data forKeyedSubscript:(NSString *)key;
 @end
+
