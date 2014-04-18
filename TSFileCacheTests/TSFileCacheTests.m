@@ -186,4 +186,15 @@ static NSString * const mainTestDirectory = @"aslkdjfsalkdjfskfdl-sdfsasdfsalfkj
     XCTAssertNotNil([_fileCache allKeys], @"");
 }
 
+
+#pragma mark - attributesOfFileForKey:
+- (void)testThatAttributesShouldBeReturned {
+    [_fileCache prepare:nil];
+    NSData *data = [@"this is a string" dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *key = [_fileCache storeDataForUndefinedKey:data];
+
+    NSDictionary *attributes = [_fileCache attributesOfFileForKey:key error:nil];
+    XCTAssertTrue([attributes allKeys].count > 0, @"");
+}
+
 @end

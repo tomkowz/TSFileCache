@@ -19,7 +19,7 @@ static NSString * const TSFileCacheErrorDomain = @"TSFileCacheErrorDomain";
 
 
 @interface TSFileCache (Prepare)
-- (BOOL)_prepareWithDirectoryAtURL:(NSURL *)directoryURL error:(NSError *__autoreleasing *)error;
+- (BOOL)_prepareWithDirectoryAtURL:(NSURL *)directoryURL error:(NSError **)error;
 @end
 
 @interface TSFileCache (StorageManager)
@@ -28,6 +28,7 @@ static NSString * const TSFileCacheErrorDomain = @"TSFileCacheErrorDomain";
 - (void)_writeData:(NSData *)data atURL:(NSURL *)fileURL;
 - (void)_clearDirectoryAtURL:(NSURL *)storageURL;
 - (NSArray *)_allFileNamesAtURL:(NSURL *)directoryURL;
+- (NSDictionary *)_attributesOfFileAtURL:(NSURL *)fileURL error:(NSError **)error;
 @end
 
 
@@ -128,6 +129,23 @@ static TSFileCache *_sharedInstance = nil;
     return [self _allFileNamesAtURL:_directoryURL];
 }
 
+- (NSDictionary *)attributesOfFileForKey:(NSString *)key error:(NSError *__autoreleasing *)error {
+    NSError *localError = nil;
+    NSDictionary *attributes = [NSDictionary dictionary];
+    if (key) {
+        NSDictionary *tmpAttributes = [self _attributesOfFileAtURL:[_directoryURL URLByAppendingPathComponent:key] error:&localError];
+        if (tmpAttributes) {
+            attributes = tmpAttributes;
+        }
+        
+        if (localError && error) {
+            *error = localError;
+        }
+    }
+    
+    return attributes;
+}
+
 + (NSURL *)_temporaryDirectoryURL {
     return [NSURL fileURLWithPath:NSTemporaryDirectory()];
 }
@@ -206,6 +224,16 @@ static TSFileCache *_sharedInstance = nil;
     NSDirectoryEnumerator *enumerator = [fileManager enumeratorAtPath:[directoryURL path]];
     
     return [[enumerator allObjects] copy];
+}
+
+- (NSDictionary *)_attributesOfFileAtURL:(NSURL *)fileURL error:(NSError *__autoreleasing *)error {
+    NSError *localError = nil;
+    NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:[fileURL path] error:&localError];
+    if (localError && error) {
+        *error = localError;
+    }
+    
+    return attributes;
 }
 
 @end

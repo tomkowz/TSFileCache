@@ -60,6 +60,7 @@
 
 
 - (NSArray *)allKeys;
+- (NSDictionary *)attributesOfFileForKey:(NSString *)key error:(NSError **)error;
 
 @end
 
