@@ -14,17 +14,17 @@ How it works?
 =========
 You create instance of a class by one of two designed initializers. You can create cache that uses some directory with method `cacheForURL:` but you can also (and I recommend that option) you method `cacheInTemporaryDirectoryWithRelativeURL:` which uses directory inside sandbox's temporary directory which is managed by system so you can forget about cleaning this directory.
 
-#### `cacheForURL:`
+#### `+cacheForURL:`
     NSURL *directoryURL = [NSURL fileURLWithPath:...];
 	TSFileCache *cache = [TSFileCache cacheForURL:directoryURL];
 	
-#### `cacheInTemporaryDirectoryWithRelativeURL:`
+#### `+cacheInTemporaryDirectoryWithRelativeURL:`
 	NSURL *url = [NSURL URLWithString:@"/Cache"];
 	TSFileCache *cache = [TSFileCache cacheInTemporaryDirectoryWithRelativeURL:url];
 
 After instance is created you have to call `prepare:` method. It prepares directory to work with files. If directory exists it do nothing, but if directory doesn't exists it try to create and return error if false (It's recommend to pass NSError object to the method parameter).
 
-##### `prepare:`
+##### `-prepare:`
     TSFileCache *cache = [TSFileCache cacheInTemporaryDirectoryWithRelativeURL:[NSURL URLWithString:@"/Cache"]];
     
     NSError *error = nil;
@@ -35,34 +35,34 @@ After instance is created you have to call `prepare:` method. It prepares direct
 
 Instance may be set as singleton via `setSharedInstance:` method and get by `sharedInstance`. You have to now that `sharedInstance` method does not create any instance of `TSFileCache` class - it simply return instance that has been set earlier by `setSharedInstance`, otherwise nil.
 
-#### `setSharedInstance:`
+#### `+setSharedInstance:`
     TSFileCache *cache = [TSFileCache cacheInTemporaryDirectoryWithRelativeURL:[NSURL URLWithString:@"/Cache/Icons"]];
     [TSFileCache setSharedInstance:cache]; /// set
 
-#### `sharedInstance`
+#### `+sharedInstance`
 	TSFileCache fileCache = [TSFileCache sharedInstance];
 
 When instance is configured use `storeData:forKey:` to store data on disk, key is used as filename. If file for key exists file will be overwritten.
 To read data for key use `dataForKey:` method. If file for key doesn't exists nil will be returned.
 
-#### `storeData:forKey:`
+#### `-storeData:forKey:`
     UIImage *image = [UIImage imageNamed:@"image.png"];
     NSData *data = UIImagePNGRepresentation(image);
     [cache storeData:data forKey:@"key"];    
     
-#### `dataForKey:`
+#### `-dataForKey:`
     NSData *data = [cache dataForKey:@"key"];
     
 
 If you want to check if key is set and if file for this key is cached already use `existsDataForKey:` method instead of `dataForKey:`. The reason for that is that you may don't know how big is the cached file and it might take a lot of time to read this file. Instead there is only simply check if file exists.
 
-#### `storeDataForUndefinedKey:`
+#### `-storeDataForUndefinedKey:`
     NSString *key = [cache storeDataForUndefinedKey:data];
 
 You can also use method `-storeDataForUndefinedKey:` to store data if you don't know key with which data should be stored. The key will be generated and returned by method. Key is unique.
 
     
-#### `existsDataForKey:`
+#### `-existsDataForKey:`
 	BOOL exists = [cache existsDataForKey:@"key"];
 
 `TSFileCache` works also as a dictionary so you can do something like this:
@@ -77,14 +77,14 @@ If you want to subclass `TSFileCache` and want to use this mechanism with other 
 
 If you want to clear directory when files are cached use `clear` method. Directory will be still there but it will be empty.
 
-#### `clear`
+#### `-clear`
     [cache clear];
 
 I also added some macro which may be helpful during subclassing because probably some method will be not necessary to be available in the subclass. I use this macro with `TSImageCache` example in this repo. This macro is using `__attribute__(unavailable(...))` and prevents before calling method which should not be called on the subclass of `TSFileCache`. Macro is defined as `__TSFileCacheUnavailable__` and here is simple use of this:
 
     + (instancetype)cacheInTemporaryDirectoryWithRelativeURL:(NSURL *)relativeURL __TSFileCacheUnavailable__;
     
-#### `allKeys`
+#### `-allKeys`
 	NSArray *keys = [cache allKeys];
 	
 Use `allKeys` method to get all keys inside cache directory.
@@ -103,6 +103,7 @@ Logs
 
 - `-prepare:` method returns BOOL, earlier was void. It's because static code analyse warnings.
 
+- implemented `-allKeys` method.
 
 **1.0.1**:
 
