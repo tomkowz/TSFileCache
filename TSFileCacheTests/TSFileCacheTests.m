@@ -146,6 +146,15 @@ static NSString * const mainTestDirectory = @"aslkdjfsalkdjfskfdl-sdfsasdfsalfkj
     XCTAssertFalse(_fileCache[@"b"], @"");
 }
 
+
+#pragma mark - removeDataForKey:
+- (void)testThatDataShouldBeRemoved {
+    [_fileCache prepare:nil];
+    _fileCache[@"a"] = [NSData data];
+    [_fileCache removeDataForKey:@"a"];
+    XCTAssertFalse(_fileCache[@"a"], @"");
+}
+
 #pragma mark - clean
 - (void)testThatDataCacheShouldBeEmpty {
     NSString *string = @"This is a string which will be stored and removed later";

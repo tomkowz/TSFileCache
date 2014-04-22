@@ -50,15 +50,16 @@
 /// Store data for passed key.
 - (void)storeData:(NSData *)data forKey:(NSString *)key;
 
-/**
- Store data for undefined key. Returns key. Key is unique.
- */
+/// Store data for undefined key. Returns key. Key is unique.
 - (NSString *)storeDataForUndefinedKey:(NSData *)data;
+
+/// Removes data for specified key
+- (void)removeDataForKey:(NSString *)key;
 
 /// Check if data exists for key.
 - (BOOL)existsDataForKey:(NSString *)key;
 
-
+/// Returns all set keys.
 - (NSArray *)allKeys;
 
 /// If file exists attributes will be returned. Otherwise empty dictionary.
