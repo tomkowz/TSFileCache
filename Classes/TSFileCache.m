@@ -104,7 +104,7 @@ static TSFileCache *_sharedInstance = nil;
 
 - (void)storeData:(NSData *)data forKey:(NSString *)key {
     if (data && key) {
-        [self _writeData:data atURL:[_directoryURL URLByAppendingPathComponent:key]];
+        [self _writeData:data atURL:URLTo(key)];
     }
 }
 
@@ -126,11 +126,7 @@ static TSFileCache *_sharedInstance = nil;
 }
 
 - (BOOL)existsDataForKey:(NSString *)key {
-    BOOL exists = NO;
-    if (key) {
-        exists = [self _existsFileAtURL:URLTo(key)];
-    }
-    return exists;
+    return (key != nil) ? [self _existsFileAtURL:URLTo(key)] : NO;
 }
 
 - (NSArray *)allKeys {
