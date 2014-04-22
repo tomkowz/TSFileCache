@@ -108,6 +108,11 @@ Class is available via the [CocoaPods](http://cocoapods.org).
     
 Logs
 =====
+**1.0.3**:
+
+- added `-removeDataForKey:` method.
+
+
 **1.0.2**:
 
 - implemented `-storeDataForUndefinedKey:` method.
