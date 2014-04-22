@@ -53,6 +53,9 @@
 /// Store data for undefined key. Returns key. Key is unique.
 - (NSString *)storeDataForUndefinedKey:(NSData *)data;
 
+/// Removes data for specified key
+- (void)removeDataForKey:(NSString *)key;
+
 /// Check if data exists for key.
 - (BOOL)existsDataForKey:(NSString *)key;
 

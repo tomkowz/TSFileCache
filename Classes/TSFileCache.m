@@ -26,6 +26,7 @@ static NSString * const TSFileCacheErrorDomain = @"TSFileCacheErrorDomain";
 - (BOOL)_existsFileAtURL:(NSURL *)fileURL;
 - (NSData *)_readFileAtURL:(NSURL *)fileURL;
 - (void)_writeData:(NSData *)data atURL:(NSURL *)fileURL;
+- (void)_removeDataAtURL:(NSURL *)fileURL;
 - (void)_clearDirectoryAtURL:(NSURL *)storageURL;
 - (NSArray *)_allFileNamesAtURL:(NSURL *)directoryURL;
 - (NSDictionary *)_attributesOfFileAtURL:(NSURL *)fileURL error:(NSError **)error;
@@ -115,6 +116,11 @@ static TSFileCache *_sharedInstance = nil;
         [self storeData:data forKey:key];
     }
     return key;
+}
+
+- (void)removeDataForKey:(NSString *)key {
+    [_cache removeObjectForKey:key];
+    [self _removeDataAtURL:[_directoryURL URLByAppendingPathComponent:key]];
 }
 
 - (BOOL)existsDataForKey:(NSString *)key {
@@ -209,6 +215,10 @@ static TSFileCache *_sharedInstance = nil;
 
 - (void)_writeData:(NSData *)data atURL:(NSURL *)fileURL {
     [data writeToURL:fileURL atomically:YES];
+}
+
+- (void)_removeDataAtURL:(NSURL *)fileURL {
+    [[NSFileManager defaultManager] removeItemAtURL:fileURL error:nil];
 }
 
 - (void)_clearDirectoryAtURL:(NSURL *)directoryURL {
