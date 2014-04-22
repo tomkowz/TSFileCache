@@ -8,6 +8,8 @@
 
 #import "TSFileCache.h"
 
+#define URLTo(url) [_directoryURL URLByAppendingPathComponent:url]
+
 @interface NSURL (TSFileCache)
 - (NSURL *)_tsfc_appendURL:(NSURL *)url;
 @end
@@ -92,7 +94,7 @@ static TSFileCache *_sharedInstance = nil;
     if (key) {
         data = [_cache objectForKey:key];
         if (!data && [self existsDataForKey:key]) {
-            data = [self _readFileAtURL:[_directoryURL URLByAppendingPathComponent:key]];
+            data = [self _readFileAtURL:URLTo(key)];
             if (data)
                 [_cache setObject:data forKey:key];
         }
@@ -120,13 +122,13 @@ static TSFileCache *_sharedInstance = nil;
 
 - (void)removeDataForKey:(NSString *)key {
     [_cache removeObjectForKey:key];
-    [self _removeDataAtURL:[_directoryURL URLByAppendingPathComponent:key]];
+    [self _removeDataAtURL:URLTo(key)];
 }
 
 - (BOOL)existsDataForKey:(NSString *)key {
     BOOL exists = NO;
     if (key) {
-        exists = [self _existsFileAtURL:[_directoryURL URLByAppendingPathComponent:key]];
+        exists = [self _existsFileAtURL:URLTo(key)];
     }
     return exists;
 }
@@ -139,7 +141,7 @@ static TSFileCache *_sharedInstance = nil;
     NSError *localError = nil;
     NSDictionary *attributes = [NSDictionary dictionary];
     if (key) {
-        NSDictionary *tmpAttributes = [self _attributesOfFileAtURL:[_directoryURL URLByAppendingPathComponent:key] error:&localError];
+        NSDictionary *tmpAttributes = [self _attributesOfFileAtURL:URLTo(key) error:&localError];
         if (tmpAttributes) {
             attributes = tmpAttributes;
         }
