@@ -61,6 +61,11 @@ If you want to check if key is set and if file for this key is cached already us
 
 You can also use method `-storeDataForUndefinedKey:` to store data if you don't know key with which data should be stored. The key will be generated and returned by method. Key is unique.
 
+#### `-removeDataForKey:`
+    [cache removeDataForKey:key];
+    
+To remove cached file call `removeDataForKey`.
+
     
 #### `-existsDataForKey:`
 	BOOL exists = [cache existsDataForKey:@"key"];
