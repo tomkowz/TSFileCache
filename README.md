@@ -104,10 +104,20 @@ CocoaPods
 =========
 Class is available via the [CocoaPods](http://cocoapods.org).
 
-    pod 'TSFileCache', '~> 1.0.2'
+    pod 'TSFileCache', '~> 1.0.4'
     
 Logs
 =====
+**1.0.4**:
+
+- `cache` is now exposed as `readonly` property. Was private ivar. It has been exposed because of performance issues. Sometimes is better to store e.g. UIImage in cache instead of NSData and convert this NSData every time to UIImage. Please familiarize at *TSImageCache* example.
+
+
+**1.0.3**:
+
+- added `-removeDataForKey:` method.
+
+
 **1.0.2**:
 
 - implemented `-storeDataForUndefinedKey:` method.
