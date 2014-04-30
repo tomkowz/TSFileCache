@@ -104,10 +104,15 @@ CocoaPods
 =========
 Class is available via the [CocoaPods](http://cocoapods.org).
 
-    pod 'TSFileCache', '~> 1.0.2'
+    pod 'TSFileCache', '~> 1.0.3'
     
 Logs
 =====
+**1.0.3**:
+
+- added `-removeDataForKey:` method.
+
+
 **1.0.2**:
 
 - implemented `-storeDataForUndefinedKey:` method.
