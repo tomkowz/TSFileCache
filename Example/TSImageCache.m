@@ -21,11 +21,21 @@ static TSImageCache *_sharedInstance = nil;
 }
 
 - (UIImage *)imageForKey:(NSString *)key {
-    NSData *data = [super dataForKey:key];
-    return [UIImage imageWithData:data];
+    UIImage *image = [self.cache objectForKey:key];
+    if (key && !image) {
+        if ([self existsDataForKey:key]) {
+            NSData *data = [super dataForKey:key];
+            if (data) {
+                image = [UIImage imageWithData:data];
+                [self.cache setObject:image forKey:key];
+            }
+        }
+    }
+    return image;
 }
 
 - (void)cacheImage:(UIImage *)image forKey:(NSString *)key {
+    [self.cache setObject:image forKey:key];
     NSData *data = UIImagePNGRepresentation(image);
     [super storeData:data forKey:key];
 }

@@ -20,6 +20,7 @@
 @interface TSFileCache : NSObject
 
 @property (nonatomic, readonly) NSURL *directoryURL;
+@property (nonatomic, readonly) NSCache *cache;
 
 /// Set shared instance.
 + (void)setSharedInstance:(TSFileCache *)instance;
