@@ -110,7 +110,7 @@ Logs
 =====
 **1.0.4**:
 
-- `cache` is now exposed as `readonly` property. Was private ivar. It has been exposed because of performance issues. Sometimes is better to store e.g. UIImage in cache instead of NSData and convert this NSData every time to UIImage. Please familiarize at *TSImageCache* example.
+- `cache` is now exposed as `readonly` property. Was private ivar. It has been exposed because of performance issues. Sometimes is better to store e.g. UIImage in cache instead of NSData and convert this NSData every time to UIImage. Please familiarize yourself with *TSImageCache* example.
 
 
 **1.0.3**:
