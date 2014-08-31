@@ -102,7 +102,7 @@ static TSFileCache *_sharedInstance = nil;
     return data;
 }
 
-- (void)storeData:(NSData *)data forKey:(NSString *)key {
+- (void)writeDataOnDisk:(NSData *)data forKey:(NSString *)key {
     if (data && key) {
         [self _writeData:data atURL:URLTo(key)];
     }
@@ -115,7 +115,7 @@ static TSFileCache *_sharedInstance = nil;
             key = [self _generateKey];
         } while (!key || (key && [self existsDataForKey:key]));
         
-        [self storeData:data forKey:key];
+        [self writeDataOnDisk:data forKey:key];
     }
     return key;
 }
@@ -167,7 +167,7 @@ static TSFileCache *_sharedInstance = nil;
 }
 
 - (void)setObject:(NSData *)data forKeyedSubscript:(NSString *)key {
-    [self storeData:data forKey:key];
+    [self writeDataOnDisk:data forKey:key];
 }
 
 @end

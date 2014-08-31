@@ -37,7 +37,16 @@ static TSImageCache *_sharedInstance = nil;
 - (void)cacheImage:(UIImage *)image forKey:(NSString *)key {
     [self.cache setObject:image forKey:key];
     NSData *data = UIImagePNGRepresentation(image);
-    [super storeData:data forKey:key];
+    [super writeDataOnDisk:data forKey:key];
+}
+
+- (NSString *)cacheImageForUndefinedKey:(UIImage *)image store:(BOOL)store {
+    NSData *data = UIImagePNGRepresentation(image);
+    NSString *key = [super storeDataForUndefinedKey:data];
+    if (store) {
+        [self.cache setObject:image forKey:key];
+    }
+    return key;
 }
 
 - (void)clear {

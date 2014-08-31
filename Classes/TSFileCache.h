@@ -49,7 +49,7 @@
 - (NSData *)dataForKey:(NSString *)key;
 
 /// Store data for passed key.
-- (void)storeData:(NSData *)data forKey:(NSString *)key;
+- (void)writeDataOnDisk:(NSData *)data forKey:(NSString *)key;
 
 /// Store data for undefined key. Returns key. Key is unique.
 - (NSString *)storeDataForUndefinedKey:(NSData *)data;

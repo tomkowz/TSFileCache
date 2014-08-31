@@ -7,6 +7,7 @@
 //
 
 #import "TSFileCache.h"
+#import <UIKit/UIKit.h>
 
 @interface TSImageCache : TSFileCache
 
@@ -14,7 +15,7 @@
 
 - (UIImage *)imageForKey:(NSString *)key;
 - (void)cacheImage:(UIImage *)image forKey:(NSString *)key;
-
+- (NSString *)cacheImageForUndefinedKey:(UIImage *)image store:(BOOL)store;
 - (void)clear;
 
 
@@ -23,7 +24,7 @@
 + (instancetype)cacheForURL:(NSURL *)directoryURL __TSFileCacheUnavailable__;
 + (instancetype)cacheInTemporaryDirectoryWithRelativeURL:(NSURL *)relativeURL __TSFileCacheUnavailable__;
 - (NSData *)dataForKey:(NSString *)key __TSFileCacheUnavailable__;
-- (void)storeData:(NSData *)data forKey:(NSString *)key __TSFileCacheUnavailable__;
+- (void)writeDataOnDisk:(NSData *)data forKey:(NSString *)key __TSFileCacheUnavailable__;
 
 @end
 
